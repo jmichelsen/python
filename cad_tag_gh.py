@@ -14,7 +14,7 @@ for file in os.listdir(dir_dxf):
     filepath = os.path.join(dir_dxf, file)
     dxf = dx.readfile(filepath)
 
-    #The tag metadata lives in the entitiews section of the DXF file
+    #The tag metadata lives in the entities section of the DXF file
     #and we only care about the type of entity that has 'TEXT' and then 
     #the data that is needed lives in the align_point  field
     for entity in dxf.entities:
@@ -23,7 +23,7 @@ for file in os.listdir(dir_dxf):
             coordinates = list(entity.align_point)
 
             #some of these coordinates have deimal points that
-            #enter into the millionth, so rounding is prefered
+            #enter into the millionth, so rounding is preferred
             for idx,c in enumerate(coordinates):
                 coordinates[idx] = round(c)
             
@@ -40,6 +40,4 @@ for key, value in tag_dict.items():
                         'Rotation': value[2]}, ignore_index = True)
 
 out_dir = eg.diropenbox(msg='Please open Directory that will store output file')
-
-# with pd.ExcelWriter(os.path.join(out_dir,'Tag Data.xlsx')) as writer:
 df.to_excel(os.path.join(out_dir,'Tag Data.xlsx'), sheet_name='Sheet1', index = False)

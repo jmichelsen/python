@@ -1,4 +1,4 @@
-#This script prints out a csv export of the x, y and z axis coordinates tag data
+#This script prints out an Excel export of the x, y and z axis coordinates tag data
 #based on the dxf files in the user's targeted directory
 #The values are stored in a dictionary with the filename as the key, and then ultimately migrates it to a dataframe so it
 #can be exported to an excel spreadsheet
